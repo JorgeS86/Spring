@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>EDITAR Noticia</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/formulario.css">
+    </head>
+    <body>
+
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">NOTICIAS DE AYER</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link active" aria-current="page" href="http://localhost:8080/home">Home</a>
+                            <a class="nav-link" href="http://localhost:8080/noticia/lista">NOTICIAS</a>
+                            <a class="nav-link" href="http://localhost:8080/noticia/registrar">NUEVA</a>
+                            <a class="nav-link" href="http://localhost:8080/noticia/modificar">EDITAR/ELIMINAR</a>
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
+            <div class="card-body">
+                <h5 class="card-title">Error 👎</h5>
+                <p class="card-text" th:text="${error}"></p>
+            </div>
+        </div>
+        <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+            <div class="card-body">
+                <h5 class="card-title">Exito!</h5>
+                <p class="card-text" th:text="${exito}"></p>
+            </div>
+        </div>
+
+        <div class="container-fluid m-5 contenedor">
+
+            <form th:action="@{/noticia/modificar/__${noticia.id}__}" method="POST">
+
+                <div class="form-group my-3">
+                    <label class="mb-2">Cargar Noticias</label>
+                    <input hidden th:value="${id}" name="id">
+                    <input type="text" class="form-control" name="titulo" placeholder="Titulo de la noticia">
+                    <input type="text" class="form-control" name="cuerpo" placeholder="Cuerpo de la noticia">
+                    <input type="text" class="form-control" name="alta" placeholder="ALTA/BAJA">
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
+            </form>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>  
+    </body>
+</html>
