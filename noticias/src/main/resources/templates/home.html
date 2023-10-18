@@ -25,8 +25,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <a class="nav-link" href="http://localhost:8080/noticia/lista">NOTICIAS</a>
                             <a class="nav-link" href="http://localhost:8080/noticia/registrar">NUEVA</a>
                             <a class="nav-link" href="http://localhost:8080/noticia/modificar">EDITAR/ELIMINAR</a>
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="buscar" placeholder="Buscar" aria-label="Buscar">
+                            <form class="d-flex" th:action="@{/buscar}" method="get">
+                                <input class="form-control me-2" name="palabra" type="text" placeholder="Buscar" aria-label="Buscar">
                                 <button class="btn btn-outline-success" type="submit">Buscar</button>
                             </form>
                         </div>

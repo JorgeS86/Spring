@@ -44,7 +44,14 @@ public class NoticiaServicio {
         List<Noticia> noticias = new ArrayList();
         noticias = noticiaRepositorio.findAll();
 //      noticias = noticiaRepositorio.buscarNoticiaPorFecha();
-//      noticias = noticiaRepositorio.buscarNoticiaPorPalabra();
+        return noticias;
+    }
+    
+    public List<Noticia> listarNoticiasPorPalabra(String palabra) {
+        List<Noticia> noticias = new ArrayList();
+//        String palabra = "tina";
+//        System.out.println("Titulo"+palabra);
+        noticias = noticiaRepositorio.buscarNoticiaPorPalabra(palabra);
         return noticias;
     }
 
@@ -63,15 +70,15 @@ public class NoticiaServicio {
             noticia.setFecha(new Date());
         }
     }
-    
-    public void eliminarNoticia(Long id) throws MiException{
-         validarId(id);
-         
-         noticiaRepositorio.deleteById(id);
-        
+
+    public void eliminarNoticia(Long id) throws MiException {
+        validarId(id);
+
+        noticiaRepositorio.deleteById(id);
+
     }
-    
-    public Noticia getOne(Long id){
+
+    public Noticia getOne(Long id) {
         return noticiaRepositorio.getOne(id);
     }
 
@@ -84,10 +91,10 @@ public class NoticiaServicio {
             throw new MiException("El Titulo no puede ser Nulo o estar Vacio");
         }
     }
-    
-     private void validarId(Long id) throws MiException {
+
+    private void validarId(Long id) throws MiException {
         if (id == null) {
             throw new MiException("El ID no puede ser Nulo");
         }
-     }
+    }
 }

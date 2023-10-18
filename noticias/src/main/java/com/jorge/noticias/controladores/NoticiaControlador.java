@@ -50,7 +50,6 @@ public class NoticiaControlador {
 
     @GetMapping("/lista")
     public String listar(ModelMap modelo) {
-        //List<Noticia> noticias = noticiaServicio.listarNoticias();
         List<Noticia> noticias = noticiaServicio.listarNoticias();
         modelo.addAttribute("noticias", noticias);
 
@@ -89,17 +88,16 @@ public class NoticiaControlador {
         }
     }
 
-    
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id, ModelMap modelo) {
         modelo.put("noticia", noticiaServicio.getOne(id));
         return "noticia_eliminar.html";
     }
-    
+
     @PostMapping("/eliminar/{id}")
-    public String eliminarNoticia(@PathVariable Long id, ModelMap modelo){
+    public String eliminarNoticia(@PathVariable Long id, ModelMap modelo) {
         System.out.println("id:" + id);
-        
+
         try {
             noticiaServicio.eliminarNoticia(id);
             return "redirect:../lista";
@@ -108,11 +106,20 @@ public class NoticiaControlador {
             return "noticia_lista_modificar.html";
         }
     }
-    
-     @GetMapping("/ver/{id}")
+
+    @GetMapping("/ver/{id}")
     public String verNoticia(@PathVariable Long id, ModelMap modelo) {
         modelo.put("noticia", noticiaServicio.getOne(id));
         return "noticia_ver.html";
+    }
+
+    @GetMapping("/buscar")
+    public String buscarNoticiaPorPalabra(@RequestParam(required = false) String palabra, ModelMap modelo) {
+        if (palabra != null && !palabra.isEmpty()) {
+            List<Noticia> noticias = noticiaServicio.listarNoticiasPorPalabra(palabra);
+            modelo.addAttribute("noticias", noticias);
+        }
+        return "noticia_buscar.html";
     }
     
 }

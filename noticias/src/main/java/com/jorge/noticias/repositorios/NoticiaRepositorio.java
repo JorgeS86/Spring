@@ -19,11 +19,11 @@ import org.springframework.stereotype.Repository;
 public interface NoticiaRepositorio extends JpaRepository<Noticia, Long>{
    
     @Query("SELECT n FROM Noticia n WHERE n.titulo = :titulo" )
-    public Noticia buscarNoticiaPorTitulo(@Param("titulo") String titulo);
+    public List<Noticia> buscarNoticiaPorTitulo(@Param("titulo") String titulo);
     
     @Query("SELECT n FROM Noticia n ORDER BY n.fecha DESC" )
     public List<Noticia> buscarNoticiaPorFecha();
     
-    @Query("SELECT n FROM Noticia n WHERE n.titulo LIKE '%1%'" )
-    public List<Noticia> buscarNoticiaPorPalabra();
+    @Query("SELECT n FROM Noticia n WHERE n.titulo LIKE %:palabra%")
+    public List<Noticia> buscarNoticiaPorPalabra(@Param("palabra")String palabra);
 }

@@ -16,7 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <header>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">NOTICIAS DE AYER</a>
+                    <a class="navbar-brand" href="#">RESULTADOS BUSQUEDA</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -26,10 +26,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <a class="nav-link" href="http://localhost:8080/noticia/lista">NOTICIAS</a>
                             <a class="nav-link" href="http://localhost:8080/noticia/registrar">NUEVA</a>
                             <a class="nav-link" href="http://localhost:8080/noticia/modificar">EDITAR/ELIMINAR</a>
-                            <form class="d-flex" th:action="@{/noticia/buscar}" method="get">
-                                <input class="form-control me-2" name="palabra" type="text" placeholder="Buscar" aria-label="Buscar">
-                                <button class="btn btn-outline-success" type="submit">Buscar</button>
-                            </form>
                         </div>
 
                     </div>
